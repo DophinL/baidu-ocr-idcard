@@ -1,0 +1,31 @@
+{
+  "name": "baidu-ocr-idcard",
+  "version": "1.0.0",
+  "description": "基于百度ocr的身份证（二代）识别",
+  "main": "index.js",
+  "directories": {
+    "example": "./examples",
+    "lib": "./lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DophinL/baidu-ocr-idcard.git"
+  },
+  "keywords": [
+    "百度ocr",
+    "nodejs",
+    "身份证识别"
+  ],
+  "author": "Dophin Lau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DophinL/baidu-ocr-idcard/issues"
+  },
+  "homepage": "https://github.com/DophinL/baidu-ocr-idcard",
+  "dependencies": {
+    "formidable": "^1.0.17"
+  }
+}
