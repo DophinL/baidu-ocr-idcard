@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>第二代身份证ocr</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+
+<body>
+    <form id="upload_form" action="/idcard" enctype="multipart/form-data" method="post">
+        <input type="file" name="idcard" multiple="multiple"> 正：
+        <input type="radio" name='side' value='obverse'>反：
+        <input type="radio" name='side' value='reverse'>(不选则默认为自动检查正反面)<br/><br/>
+        <input type="submit" value="表单提交" />
+    </form>
+    <button id="upload">ajax提交</button>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+    $('#upload').click(function() {
+        var data = new FormData($('#upload_form')[0]);
+        $.ajax({
+            url: '/idcard',
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            type: 'POST',
+            data: data,
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(xhr, errMsg) {
+                console.log(errMsg);
+            }
+        })
+    })
+    </script>
+</body>
+
+</html>

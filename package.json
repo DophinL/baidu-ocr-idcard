@@ -26,7 +26,13 @@
   },
   "homepage": "https://github.com/DophinL/baidu-ocr-idcard",
   "dependencies": {
-    "baidu-ocr": "1.0.1",
-    "formidable": "1.0.17"
+    "baidu-ocr": "^1.0.1",
+    "formidable": "^1.0.17"
+  },
+  "devDependencies": {
+    "ejs": "^2.3.2",
+    "express": "^4.13.1",
+    "mocha": "^2.2.5",
+    "should": "^7.0.2"
   }
 }
