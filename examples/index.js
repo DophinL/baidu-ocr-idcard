@@ -21,9 +21,9 @@ app.post('/idcard', function(req, res) {
     form.keepExtensions = true; //保留扩展名
     form.parse(req, function(err, fields, files) {
         var side = fields['side'];
-        var path = files['idcard'].path;
-        var idcard = require('../lib/baidu-ocr-idcard.js').create('your baidu api key');
-        idcard.scan(path, side, function(err, data) {
+        var idcard = files['idcard'].path;
+        var idcardOCR = require('../lib/baidu-ocr-idcard.js').create('your baidu api key'); //process.env.BAIDU_APIKEY
+        idcardOCR.scan(idcard, side, function(err, data) {
             if(err){
                 res.json(err);
                 return;

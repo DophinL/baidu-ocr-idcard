@@ -1,21 +1,22 @@
-# baidu-ocr-idcard
+## baidu-ocr-idcard
 基于[百度OCR](http://apistore.baidu.com/apiworks/servicedetail/146.html)的二代身份证识别,for node
 
-# Functionality
-扫描第二代身份证，返回格式化数据，可在回调函数中进一步处理
+## Functionality
+扫描第二代身份证，可在回调函数中处理返回的格式化的数据
 
-# Limit
-上传身份证之前请先对身份证上的头像进行模糊处理，否则`百度ocr`无法识别，深感抱歉。
-这个问题已经向百度反馈，如果迟迟没有响应，我可能会添加头像模糊处理的功能。
+## Limit
+由于基于`百度ocr`，所以它有什么限制，这就有什么限制。目前比较受影响的限制有：
+	- 只支持jpg，且只能上传300KB以内的图片
+	- 上传身份证之前请先对身份证上的头像进行模糊处理，否则`百度ocr`无法识别，深感抱歉。这个问题已经向百度反馈，如果迟迟没有响应，我可能会添加头像模糊处理的功能。 
 
-# Install
+## Install
 暂时没有上传到`npm`，所以无法通过`npm install`的方式进行安装。
 不过如果您对`node`的`require`有一定的了解，相信您能轻易使用。
 
-# Usage
-```
-var idcard = require('../lib/baidu-ocr-idcard.js').create('your baidu api key');
-    idcard.scan(path, side, function(err, data) {
+## Usage
+```javascript
+var idcardOCR = require('../lib/baidu-ocr-idcard.js').create('your baidu api key');
+    idcardOCR.scan(idcard, side, function(err, data) {
         if(err){
             res.json(err);
             return;
@@ -24,5 +25,73 @@ var idcard = require('../lib/baidu-ocr-idcard.js').create('your baidu api key');
     })
 ```
 
-# Examples
-[Examples]()
+## API
+### create
+创建一个`IDCardOCR`对象，需传入`百度api key`。
+```javascript
+var idcardOCR = require('../lib/baidu-ocr-idcard.js').create('your baidu api key');
+```
+
+### scan
+扫描第二代身份证，可在回调函数中处理返回的格式化的数据。
+```javascript
+IDCardOCR.prototype.scan(idcard, side, cb)
+```
+`idcard`为身份证图片的路径，请务必填写正确的图片路径，否则可能造成意想不到的后果。
+`side`为身份证图片的正反面，正面为`'obverse'`，反面为`'reverse'`，其余所有值都为自动识别正反面，不过出于语义化的考虑，建议您填写`'auto'`。
+`cb`为回调函数，它接受两个参数:
+```javascript
+idcardOCR.scan(idcard, side, function(err, data) {})
+```
+第一个参数是`err`,第二个参数是`data`，它们都是`PlainObject`，格式为`{errNum:...,errMsg:...,retData:...}`。
+`err`：若有`err`存在，则代表出错；`err`不存在，则代表识别成功。其`errNum`一定为`-1`（Number类型），`errMsg`有可能为对象或者字符串，`retData`一定为空字符串''。
+`data`：其`errNum`一定为`0`，`errMsg`为字符串，`retData`的格式分两种情况，正面如下：
+```javascript
+{
+	name:'string',			//姓名
+	sex:'string',			//性别
+	nation:'string',		//民族
+	birthday:'string',		//生日
+	residence:'string',		//住所
+	idNum:'string',			//身份证号码
+	side:'string'			//为'obverse'
+}
+```
+反面如下：
+```
+{
+	authority:'string',		//签发机关
+	validPeriod:'string',	//有效期
+	side:'string'			//为'reverse'
+}
+```
+
+## Examples
+[Examples](https://github.com/DophinL/baidu-ocr-idcard/tree/master/examples)
+
+## Thanks
+[百度OCR](http://apistore.baidu.com/apiworks/servicedetail/146.html)
+[百度OCR for node](https://github.com/JeremyWei/baidu-ocr)
+
+## License
+The MIT License (MIT)
+
+Copyright (c) 2015 DophinL
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
