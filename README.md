@@ -48,9 +48,9 @@ idcardOCR.scan(idcard, side, function(err, data) {})
 ```
 第一个参数是`err`,第二个参数是`data`，它们都是`PlainObject`，格式为`{errNum:...,errMsg:...,retData:...}`。
 
-`err`：若有`err`存在，则代表出错；`err`不存在，则代表识别成功。其`errNum`一定为`-1`（Number类型），`errMsg`有可能为对象或者字符串，`retData`一定为空字符串''。
+`err`：若`err`存在，则代表出错；不存在，则代表识别成功。`errNum`一定为`-1`（Number类型），`errMsg`有可能为对象或者字符串，`retData`一定为空字符串''。
 
-`data`：其`errNum`一定为`0`，`errMsg`为字符串，`retData`的格式分两种情况，正面如下：
+`data`：`errNum`一定为`0`（Number类型），`errMsg`为字符串，`retData`的格式分两种情况，正面如下：
 ```javascript
 {
 	name:'string',			//姓名
