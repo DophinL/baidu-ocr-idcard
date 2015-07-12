@@ -59,7 +59,7 @@ idcardOCR.scan(idcard, side, function(err, data) {})
 	birthday:'string',		//生日
 	residence:'string',		//住所
 	idNum:'string',			//身份证号码
-	side:'string'			//为'obverse'
+	side:'string'			//值为'obverse'
 }
 ```
 反面如下：
@@ -67,7 +67,7 @@ idcardOCR.scan(idcard, side, function(err, data) {})
 {
 	authority:'string',		//签发机关
 	validPeriod:'string',	//有效期
-	side:'string'			//为'reverse'
+	side:'string'			//值为'reverse'
 }
 ```
 
