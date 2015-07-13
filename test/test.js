@@ -1,5 +1,5 @@
 var should = require('should');
-var idcardOCR = require('../lib/baidu-ocr-idcard').create(process.env.BAIDU_APIKEY);
+var idcardOCR = require('../lib/baidu-ocr-idcard').create(process.env.BAIDU_APIKEY);    //or create('your baidu api key')
 var UNKNOWN_SIDE_MSG = '未识别出正反面';
 var OBVERSE_SIDE_MSG = '识别成功，为正面';
 var REVERSE_SIDE_MSG = '识别成功，为反面';

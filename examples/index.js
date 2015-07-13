@@ -22,7 +22,7 @@ app.post('/idcard', function(req, res) {
     form.parse(req, function(err, fields, files) {
         var side = fields['side'];
         var idcard = files['idcard'].path;
-        var idcardOCR = require('../lib/baidu-ocr-idcard.js').create('your baidu api key'); //process.env.BAIDU_APIKEY
+        var idcardOCR = require('../lib/baidu-ocr-idcard.js').create(process.env.BAIDU_APIKEY); //or create('your baidu api key')
         idcardOCR.scan(idcard, side, function(err, data) {
             if(err){
                 res.json(err);
