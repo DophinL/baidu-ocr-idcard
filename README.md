@@ -72,6 +72,7 @@ idcardOCR.scan(idcard, side, function(err, data) {})
 ```
 
 ## Examples
+运行前请先在更目录使用`$ npm install`安装依赖，然后`$cd examples`，`$ node index.js`，然后在浏览器中输入`localhost:8888`即可启动。**请注意在`index.js`中相应代码处填写自己的`baidu api key`**。
 [Examples](https://github.com/DophinL/baidu-ocr-idcard/tree/master/examples)
 
 ## Thanks

@@ -1,8 +1,8 @@
 var should = require('should');
 var idcardOCR = require('../lib/baidu-ocr-idcard').create(process.env.BAIDU_APIKEY);
-var UNKNOWN_SIDE_MSG = "未识别出正反面";
-var OBVERSE_SIDE_MSG = "识别成功，为正面";
-var REVERSE_SIDE_MSG = "识别成功，为反面";
+var UNKNOWN_SIDE_MSG = '未识别出正反面';
+var OBVERSE_SIDE_MSG = '识别成功，为正面';
+var REVERSE_SIDE_MSG = '识别成功，为反面';
 
 var unkonwnSideImg = __dirname+'/temp/unkonwnSideImg.jpg';
 var obverseSideImg = __dirname+'/temp/obverse.jpg';
