@@ -1,7 +1,7 @@
 {
   "name": "baidu-ocr-idcard",
   "version": "1.0.0",
-  "description": "基于百度ocr的身份证（二代）识别",
+  "description": "基于百度ocr的二代身份证识别",
   "main": "index.js",
   "directories": {
     "example": "./examples",
