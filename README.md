@@ -10,9 +10,10 @@
 - 上传身份证之前请先对身份证上的头像进行模糊处理，否则`百度ocr`无法识别，深感抱歉。这个问题已经向百度反馈，如果迟迟没有响应，我可能会添加头像模糊处理的功能。 
 
 ## Install
-暂时没有上传到`npm`，所以无法通过`npm install`的方式进行安装。
-
-不过如果您对`node`的`require`有一定的了解，相信您能轻易使用。
+在命令行中输入：
+```javascript
+$ npm install baidu-ocr-idcard
+```
 
 ## Usage
 ```javascript
