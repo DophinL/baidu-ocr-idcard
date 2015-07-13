@@ -89,8 +89,14 @@ describe('Scan', function() {
 describe('Private method', function() {
     describe('extractValidPeriod passed with string whitch contain 16 numbers', function() {
         it('should return a formatted date string', function() {
-            var result = require('../lib/baidu-ocr-idcard').extractValidPeriod("有效期限*20.12,-04;20`2015#06-17");
-            result.should.be.exactly('2012.04.20-2015.06.17');
+            var result = require('../lib/baidu-ocr-idcard').extractValidPeriod("有效期限2012b04a292015j0829");
+            result.should.be.exactly('2012-04-29~2015-08-29');
+        });
+    });
+    describe('extractBirthday passed with "出生1994年4月29日住址"', function() {
+        it('should return "1994-04-29"', function() {
+            var result = require('../lib/baidu-ocr-idcard').extractBirthday("出生1994年4月29日住址");
+            result.should.be.exactly('1994-04-29');
         });
     });
 });
