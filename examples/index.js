@@ -16,7 +16,7 @@ app.get('/', function(req, res) {
 
 app.post('/idcard', function(req, res) {
     var form = new formidable.IncomingForm();
-    form.uploadDir = './temp';
+    form.uploadDir = './temp';  //图片的存放路径，若路径不存在则会报错
     form.multiples = false; //不允许多文件上传
     form.keepExtensions = true; //保留扩展名
     form.parse(req, function(err, fields, files) {
